@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To Do List</title>
+</head>
+<body>
+    <div>
+        <form action="/GetItem" method="POST">
+            <label>Add an item</label>
+            <input type="text" name="todoItem"><br/><br/>
+            <label>Give priority</label>
+            <input type="text" name="priority"><small>give priority from 1 to 10</small><br/>
+            <input type="submit" value="Add item">
+        </form>
+    </div>
+    <div>
+        <h3>To do tasks</h3>
+        <form action="/UpdateOrDelete" method="post">
+            <ul>
+                {% for list in lists %}
+                    <li><input type="checkbox" value="{{ list.id }}" name="on">{{ list.todo }}</li>
+                {% endfor %}
+            </ul>
+            <input type="submit" name="submit" value="Mark as complete">
+            <input type="submit" name="submit" value="Delete">
+        </form>
+    </div>
+</body>
+</html>
